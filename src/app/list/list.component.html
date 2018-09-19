@@ -1,0 +1,11 @@
+<h2> Item List </h2>
+<mat-card class="item_card" *ngFor="let item of items">
+  <mat-card-header>
+    <mat-card-title> {{ item.name }} </mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-stroked-button class="item_button">DELETE</button>
+    <button mat-stroked-button class="item_button">EDIT</button>
+    <mat-checkbox class="item_button"> Done </mat-checkbox>
+  </mat-card-actions>
+</mat-card>
