@@ -16,11 +16,15 @@ export class ListComponent implements OnInit {
     this.getItems();
   }
 
-  getItems(){
+  getItems() {
     this.data.getItems().subscribe( (items: Array<object>) => {
       this.items = items;
       console.log(items);
-    })
+    });
+  }
+
+  deleteItem(event: Event) {
+    console.log('Clicked', event);
   }
 
 }

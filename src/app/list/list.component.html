@@ -1,11 +1,14 @@
 <h2> Item List </h2>
-<mat-card class="item_card" *ngFor="let item of items">
-  <mat-card-header>
-    <mat-card-title> {{ item.name }} </mat-card-title>
-  </mat-card-header>
-  <mat-card-actions>
-    <button mat-stroked-button class="item_button">DELETE</button>
-    <button mat-stroked-button class="item_button">EDIT</button>
-    <mat-checkbox class="item_button"> Done </mat-checkbox>
-  </mat-card-actions>
-</mat-card>
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <mat-card class="item_card" *ngFor="let item of items">
+        <mat-card-header>
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column"> {{ item.name }} </mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-button (click)="deleteItem($event)"><mat-icon> delete </mat-icon></button>
+          <button mat-button (click)="editItem($event)"><mat-icon> edit </mat-icon></button>
+          <mat-checkbox class="item_button"> Done </mat-checkbox>
+        </mat-card-actions>
+      </mat-card>
+  </div>

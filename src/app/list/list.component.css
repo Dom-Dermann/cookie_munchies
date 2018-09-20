@@ -1,5 +1,6 @@
 .item_card {
     margin: 10px;
+    max-width: 400px;
 }
 
 .item_button {
