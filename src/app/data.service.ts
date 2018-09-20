@@ -13,4 +13,12 @@ export class DataService {
   getItems(){
     return this.http.get(this.API_URL);
   }
+
+  postItem(name){
+    const item = {
+      name: name
+    };
+     
+    return this.http.post(this.API_URL, item);
+  }
 }
