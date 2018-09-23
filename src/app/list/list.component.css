@@ -1,8 +1,8 @@
-.item_card {
-    margin: 10px;
-    max-width: 400px;
+.item-table {
+    min-width: 100px;
+    width: 100%;
 }
 
-.item_button {
-    margin: 5px;
+.mat-column-right {
+    text-align: center;
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 
+import { Item } from '../items.model';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -8,7 +10,8 @@ import { DataService } from '../data.service';
 })
 export class ListComponent implements OnInit {
 
-  public items: Array<object> = [];
+  public items: Item[];
+  private displayedColumns = ['name', 'status', 'actions'];
 
   constructor(private data: DataService) { }
 
@@ -17,14 +20,16 @@ export class ListComponent implements OnInit {
   }
 
   getItems() {
-    this.data.getItems().subscribe( (items: Array<object>) => {
+    this.data.getItems().subscribe( (items: Item[]) => {
       this.items = items;
       console.log(items);
     });
   }
 
-  deleteItem(event: Event) {
-    console.log('Clicked', event);
+  deleteItem(id) {
+    this.data.deleteItem(id).subscribe( (res) => {
+      console.log(res);
+      this.getItems();
+    });
   }
-
 }

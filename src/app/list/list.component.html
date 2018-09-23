@@ -1,14 +1,29 @@
-<h2> Item List </h2>
+<div>
+  <mat-card>
+    <mat-divider></mat-divider>
+    <br>
+    <table mat-table [dataSource]="items" class="item-table">
 
-<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-    <mat-card class="item_card" *ngFor="let item of items">
-        <mat-card-header>
-          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column"> {{ item.name }} </mat-card-title>
-        </mat-card-header>
-        <mat-card-actions>
-          <button mat-icon-button color="warn" (click)="deleteItem($event)"><mat-icon> delete </mat-icon></button>
-          <button mat-icon-button color="primary" (click)="editItem($event)"><mat-icon> edit </mat-icon></button>
-          <mat-checkbox class="item_button"> Done </mat-checkbox>
-        </mat-card-actions>
-      </mat-card>
-  </div>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Item name</th>
+        <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element"> {{ element.isDone }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="mat-column-right">Actions</th>
+        <td mat-cell *matCellDef="let element" class="mat-column-right"> 
+          <button mat-icon-button color="warn" (click)="deleteItem( element._id )"><mat-icon> delete </mat-icon></button>
+          <button mat-icon-button color="primary" (click)="editItem( element._id )"><mat-icon> edit </mat-icon></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+</div>

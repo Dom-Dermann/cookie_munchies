@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,5 +21,9 @@ export class DataService {
     };
      
     return this.http.post(this.API_URL, item);
+  }
+
+  deleteItem(id) {
+    return this.http.delete(`${this.API_URL}/${id}`);
   }
 }
