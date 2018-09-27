@@ -1,2 +1,15 @@
-<button mat-raised-button color="primary"> Create new item </button>
-<br><br>
+<form [formGroup]="createForm" class="create-form">
+        
+    <mat-form-field class="field-full-width">
+    <input matInput placeholder="Item name" formControlName="name" #name>
+    </mat-form-field>
+
+    <mat-form-field class="field-full-width">
+    <mat-select matInput placeholder="(optional) position in store" formControlName="position" #position>
+        <mat-option value="start"> start </mat-option>
+        <mat-option value="middle"> middle </mat-option>
+        <mat-option value="end"> end </mat-option>
+    </mat-select>
+    </mat-form-field>        
+    <button class="save-button" type="submit" (click)="addItem(true, name.value, position.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+</form>

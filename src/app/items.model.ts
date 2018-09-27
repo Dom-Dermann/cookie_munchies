@@ -1,6 +1,6 @@
 export interface Item {
-    id: String, 
-    idDone: Boolean,
+    _id: String, 
+    isDone: Boolean,
     name: String, 
     dateStarted: Date
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Item } from './items.model';
 
 
 @Injectable({
@@ -16,8 +17,8 @@ export class DataService {
   }
 
   postItem(name){
-    const item = {
-      name: name
+    let item = {
+      name: name,
     };
      
     return this.http.post(this.API_URL, item);
@@ -25,5 +26,10 @@ export class DataService {
 
   deleteItem(id) {
     return this.http.delete(`${this.API_URL}/${id}`);
+  }
+
+  updateItem(id, item) {
+    // TODO: write update function
+    return this.http.put(`${this.API_URL}/${id}`, item);
   }
 }

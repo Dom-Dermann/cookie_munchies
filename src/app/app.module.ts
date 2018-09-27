@@ -9,7 +9,7 @@ import { ListComponent } from './list/list.component';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule,MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule } from '@angular/material';
+import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule,MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule, MatCheckboxModule } from '@angular/material';
 import { CreateComponent } from './create/create.component';
 
 
@@ -35,6 +35,7 @@ import { CreateComponent } from './create/create.component';
     MatDividerModule, 
     MatSnackBarModule,
     ReactiveFormsModule,
+    MatCheckboxModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
