@@ -27,7 +27,7 @@ export class CreateComponent implements OnInit {
   }
 
   addItem(done:Boolean, name, position) {
-    this.data.postItem(name).subscribe( (res) => {
+    this.data.postItem(name, position).subscribe( (res) => {
       console.log(res);
       this.createClicked.emit(done);
       this.snackBar.open('Your item was succesfully added to the shopping list.', 'Cool!', {

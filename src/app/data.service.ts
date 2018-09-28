@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Item } from './items.model';
 
+import { Item } from './items.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +16,19 @@ export class DataService {
     return this.http.get(this.API_URL);
   }
 
-  postItem(name){
-    let item = {
-      name: name,
-    };
+  postItem(name, position){
+    let item: object;
+
+    if (name && position) {
+      item = {
+        name : name,
+        storePosition: position
+      }
+    } else if (name){
+      item = {
+        name: name
+      };
+    }
      
     return this.http.post(this.API_URL, item);
   }

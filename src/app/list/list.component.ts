@@ -12,7 +12,7 @@ import { Item } from '../items.model';
 export class ListComponent implements OnInit {
 
   public items = new MatTableDataSource<Item>();
-  public displayedColumns = ['name', 'status', 'actions'];
+  public displayedColumns = ['name', 'actions', 'position'];
   public updatedItem: Item;
 
   constructor(private data: DataService) { }
@@ -36,13 +36,8 @@ export class ListComponent implements OnInit {
   }
 
   buttonChecked($event, id) {
-    console.log(this.items.data);
-    console.log("ID input", id);
     this.updatedItem = this.items.data.find((i) => { return i._id === id});
-    console.log("Found this: ", this.updatedItem);
     this.updatedItem.isDone = $event.checked;
-    console.log($event.checked);
-    console.log(this.updatedItem);
     this.data.updateItem(id, this.updatedItem).subscribe( (res) => {
       console.log(res);
     })
