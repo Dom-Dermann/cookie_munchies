@@ -1,0 +1,15 @@
+.form {
+    display: inline;
+}
+
+.save-button {
+    margin-left: 20px;
+}
+
+.edit-form {
+    margin: 20px;
+}
+
+.field-full-width {
+    width: 100%;
+}

@@ -3,5 +3,6 @@ export interface Item {
     isDone: Boolean,
     name: String, 
     dateStarted: Date,
-    storePosition: String
+    storePosition: String, 
+    dateModified: Number
 }

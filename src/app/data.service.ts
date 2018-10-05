@@ -38,7 +38,6 @@ export class DataService {
   }
 
   updateItem(id, item) {
-    // TODO: write update function
     return this.http.put(`${this.API_URL}/${id}`, item);
   }
 }

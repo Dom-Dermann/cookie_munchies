@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { DataService } from '../data.service';
 import { MatTableDataSource } from '@angular/material/table';
+
+import { Router } from '@angular/router';
 
 import { Item } from '../items.model';
 
@@ -15,7 +17,7 @@ export class ListComponent implements OnInit {
   public displayedColumns = ['name', 'actions', 'position'];
   public updatedItem: Item;
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private route: Router) { }
 
   ngOnInit() {
     this.getItems();
@@ -35,8 +37,15 @@ export class ListComponent implements OnInit {
     });
   }
 
+  editClick(id) {
+    console.log(id);
+    this.route.navigate(['/edit', id]);
+  }
+
   buttonChecked($event, id) {
     this.updatedItem = this.items.data.find((i) => { return i._id === id});
+    delete this.updatedItem.storePosition;
+    this.updatedItem.dateModified = Date.now();
     this.updatedItem.isDone = $event.checked;
     this.data.updateItem(id, this.updatedItem).subscribe( (res) => {
       console.log(res);

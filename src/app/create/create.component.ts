@@ -19,7 +19,7 @@ export class CreateComponent implements OnInit {
   constructor(private data: DataService, private fb: FormBuilder, private snackBar: MatSnackBar) {
     this.createForm = this.fb.group( {
       name: ['', Validators.required],
-      status: ['']
+      position: ['']
     });
    }
 
