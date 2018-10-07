@@ -14,7 +14,7 @@ import { Item } from '../items.model';
 export class ListComponent implements OnInit {
 
   public items = new MatTableDataSource<Item>();
-  public displayedColumns = ['name', 'actions', 'position'];
+  public displayedColumns = ['name', 'actions'];
   public updatedItem: Item;
 
   constructor(private data: DataService, private route: Router) { }

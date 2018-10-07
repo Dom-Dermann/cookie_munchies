@@ -1,5 +1,25 @@
-<h1> Cookie Munchies </h1>
 
-<app-create (createClicked)="onCreateClicked($event)"></app-create>
 
-<router-outlet></router-outlet>
+<div class="background">
+    <h1> Cookie Munchies </h1>
+</div>
+
+<div style="margin: 20px">
+    <app-create (createClicked)="onCreateClicked($event)"></app-create>
+
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link
+            *ngFor="let routeLink of routeLinks; let i = index;"
+            [routerLink]="routeLink.link"
+            routerLinkActive="mat-tab-link-active"
+            #rla="routerLinkActive"
+            (click) = "activeLinkIndex = i"
+            [active]="activeLinkIndex === i"
+            [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon>{{routeLink.icon}}</mat-icon>
+            {{routeLink.label}}
+        </a>  
+    </nav>
+    <router-outlet></router-outlet>
+</div>
+

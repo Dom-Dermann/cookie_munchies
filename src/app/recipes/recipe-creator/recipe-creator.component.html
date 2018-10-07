@@ -1,0 +1,15 @@
+<h5>Create a new favorite recipe</h5>
+
+<form [formGroup]="recipeForm" class="recipe_creator">
+  <mat-form-field style="width: 100%">
+    <mat-label>Recipe</mat-label>
+    <textarea matInput
+              formControlName="description"
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="2"
+              cdkAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+
+  <button class="recipe_save" type="submit" mat-raised-button color="primary"> SAVE </button>
+</form>
