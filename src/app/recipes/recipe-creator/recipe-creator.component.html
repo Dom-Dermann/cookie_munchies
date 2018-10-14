@@ -8,8 +8,9 @@
               cdkTextareaAutosize
               #autosize="cdkTextareaAutosize"
               cdkAutosizeMinRows="2"
-              cdkAutosizeMaxRows="5"></textarea>
+              cdkAutosizeMaxRows="5"
+              #description></textarea>
   </mat-form-field>
 
-  <button class="recipe_save" type="submit" mat-raised-button color="primary"> SAVE </button>
+  <button class="recipe_save" type="submit" (click)="addRecipe(description.value)" mat-raised-button color="primary"> SAVE </button>
 </form>

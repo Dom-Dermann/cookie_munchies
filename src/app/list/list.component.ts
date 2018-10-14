@@ -21,7 +21,6 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.getItems();
-    console.log('New list page initialized');
   }
 
   getItems() {
@@ -42,6 +41,7 @@ export class ListComponent implements OnInit {
     this.route.navigate(['/edit', id]);
   }
 
+  /* commented out because this button is currently not in use
   buttonChecked($event, id) {
     this.updatedItem = this.items.data.find((i) => { return i._id === id});
     delete this.updatedItem.storePosition;
@@ -51,4 +51,5 @@ export class ListComponent implements OnInit {
       console.log(res);
     })
   }
+  */
 }

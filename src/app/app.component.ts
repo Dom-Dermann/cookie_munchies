@@ -13,12 +13,18 @@ export class AppComponent implements OnInit {
 
   routeLinks: any[];
   activeLinkIndex: Number;
+  active_route;
 
   constructor(private router: Router) {
     this.routeLinks = [
       {label: 'Shopping List', link: './itemlist', index: 0, icon: 'playlist_add_check'},
       {label: 'Recipes', link: './recipes', index: 1, icon: 'fastfood'}
     ];
+  }
+
+  onActivate($event){
+    this.active_route = $event;
+    console.log(this.active_route);
   }
 
   ngOnInit(): void{
@@ -29,6 +35,6 @@ export class AppComponent implements OnInit {
 
   onCreateClicked($event) {
     console.log('Parent received event: ', $event);
-    this.listComponent.getItems();
+    this.active_route.getItems();
   }
 }

@@ -1,4 +1,15 @@
 <p>
   <app-recipe-creator></app-recipe-creator>
-  recipe list will go here
+  
+  <mat-divider></mat-divider>
+
+  <mat-card *ngFor="let recipe of recipes">
+    <mat-card-content>
+      {{ recipe.description }}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Edit</button>
+      <button mat-button (click)="deleteRecipe(recipe._id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
 </p>
