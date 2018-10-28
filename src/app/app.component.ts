@@ -37,4 +37,9 @@ export class AppComponent implements OnInit {
     console.log('Parent received event: ', $event);
     this.active_route.getItems();
   }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.navigate(['login']);
+  }
 }

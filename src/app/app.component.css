@@ -7,3 +7,7 @@
 h1 {
     color: blue
 }
+
+.logout_button {
+    nav-right: auto
+}
