@@ -1,11 +1,11 @@
 
-
-<div class="background">
-  <h1> Cookie Munchies </h1>
-</div>
-
-
-<button class="logout_button" (click)="logout()">Logout</button>
+<mat-toolbar color="primary">
+    <mat-toolbar-row> 
+        <span> Cookie Munchies </span>
+        <span class="spacer"></span>
+        <span> <button mat-raised-button color="accent" (click)="logout()">Logout</button> </span>
+    </mat-toolbar-row>
+</mat-toolbar>
 
 <div style="margin: 20px">
     <app-create (createClicked)="onCreateClicked($event)"></app-create>

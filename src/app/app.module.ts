@@ -1,4 +1,4 @@
-import { CanvasComponent } from './canvas/canvas.component';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { CanvasComponent } from './canvas/canvas.component';
 import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
 import { CreateComponent } from './create/create.component';
@@ -32,7 +33,10 @@ import { MatToolbarModule,
           MatDividerModule,
           MatSnackBarModule,
           MatCheckboxModule,
-          MatTabsModule } from '@angular/material';
+          MatTabsModule,
+          MatGridListModule,
+          MatProgressSpinnerModule
+        } from '@angular/material';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -71,6 +75,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatCheckboxModule,
     MatTabsModule,
+    MatGridListModule,
+    MatProgressSpinnerModule
     RouterModule.forRoot(routes)
   ],
   providers: [DataService, AuthGuard, LoginComponent, AuthService, {

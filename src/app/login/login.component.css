@@ -1,0 +1,30 @@
+
+.background {
+    background-image: url("../../assets/cookie_login.jpg");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.main-login-div {
+    height: auto;
+    width: 300px;
+    align-items: center;
+    margin: auto;
+    margin-top: 10%;
+    border-radius: 10px;
+}
+
+.login-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
