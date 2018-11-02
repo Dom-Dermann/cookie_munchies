@@ -1,27 +1,2 @@
 
-
-<div class="background">
-    <h1> Cookie Munchies </h1>
-</div>
-
-<button class="logout_button" (click)="logout()">Logout</button>
-
-<div style="margin: 20px">
-    <app-create (createClicked)="onCreateClicked($event)"></app-create>
-
-    <nav mat-tab-nav-bar>
-        <a mat-tab-link
-            *ngFor="let routeLink of routeLinks; let i = index;"
-            [routerLink]="routeLink.link"
-            routerLinkActive="mat-tab-link-active"
-            #rla="routerLinkActive"
-            (click) = "activeLinkIndex = i"
-            [active]="activeLinkIndex === i"
-            [routerLinkActiveOptions]="{exact: true}">
-            <mat-icon>{{routeLink.icon}}</mat-icon>
-            {{routeLink.label}}
-        </a>  
-    </nav>
-    <router-outlet (activate)="onActivate($event)"></router-outlet>
-</div>
-
+<router-outlet></router-outlet>
