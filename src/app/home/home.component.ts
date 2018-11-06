@@ -18,8 +18,4 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 
-  redirectTimer() {
-    this.router.navigateByUrl('https://play.google.com/store/apps/details?id=de.dominikusdermann.domdermann.timers');
-  }
-
 }

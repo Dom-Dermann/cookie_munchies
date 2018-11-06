@@ -8,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { ListComponent } from './list/list.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent, passwordPopUpDialogModule } from './login/login.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -36,7 +36,9 @@ import { MatToolbarModule,
           MatCheckboxModule,
           MatTabsModule,
           MatGridListModule,
-          MatProgressSpinnerModule
+          MatProgressSpinnerModule,
+          MatDialogModule,
+
         } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 
@@ -58,7 +60,7 @@ const routes: Routes = [
     ListComponent,
     CreateComponent,
     EditComponent,
-    RecipesComponent, RecipeCreatorComponent, LoginComponent, CanvasComponent, HomeComponent
+    RecipesComponent, RecipeCreatorComponent, LoginComponent, CanvasComponent, HomeComponent, passwordPopUpDialogModule
   ],
   imports: [
     BrowserModule,
@@ -80,6 +82,7 @@ const routes: Routes = [
     MatTabsModule,
     MatGridListModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
     RouterModule.forRoot(routes)
   ],
   providers: [DataService, AuthGuard, LoginComponent, AuthService, {
@@ -87,6 +90,7 @@ const routes: Routes = [
     useClass: AuthInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [passwordPopUpDialogModule]
 })
 export class AppModule { }
