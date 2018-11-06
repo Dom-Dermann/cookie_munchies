@@ -22,24 +22,9 @@ export class AppComponent implements OnInit {
     ];
   }
 
-  onActivate($event){
-    this.active_route = $event;
-    console.log(this.active_route);
-  }
-
   ngOnInit(): void{
     this.router.events.subscribe( (res) => {
       this.activeLinkIndex = this.routeLinks.indexOf(this.routeLinks.find( tab => tab.link === '.' + this.router.url));
-    })
-  }
-
-  onCreateClicked($event) {
-    console.log('Parent received event: ', $event);
-    this.active_route.getItems();
-  }
-
-  logout() {
-    localStorage.removeItem('jwt');
-    this.router.navigate(['login']);
+    });
   }
 }

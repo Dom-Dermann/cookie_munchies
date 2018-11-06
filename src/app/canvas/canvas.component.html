@@ -1,0 +1,28 @@
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row> 
+        <span> Cookie Munchies </span>
+        <span class="spacer"></span>
+        <span> <button mat-raised-button color="accent" (click)="logout()">Logout</button> </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div style="margin: 20px">
+    <app-create (createClicked)="onCreateClicked($event)"></app-create>
+
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link
+            *ngFor="let routeLink of routeLinks; let i = index;"
+            [routerLink]="[{ outlets: { tab: [routeLink.link] } }]"
+            routerLinkActive="mat-tab-link-active"
+            #rla="routerLinkActive"
+            (click) = "activeLinkIndex = i"
+            [active]="activeLinkIndex === i"
+            [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon>{{routeLink.icon}}</mat-icon>
+            {{routeLink.label}}
+        </a>  
+    </nav>
+</div>
+
+<router-outlet name="tab" (activate)="onActivate($event)"></router-outlet>
