@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { CanvasComponent } from './canvas/canvas.component';
@@ -40,17 +41,15 @@ import { MatToolbarModule,
           MatDialogModule,
 
         } from '@angular/material';
-import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'appcanvas', component: CanvasComponent, canActivate: [AuthGuard], children: [
     {path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard], outlet: 'tab'},
     {path: 'itemlist', component: ListComponent, canActivate: [AuthGuard], outlet: 'tab'},
     {path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard], outlet: 'tab'},
   ]},
-  {path: '', redirectTo: 'home', pathMatch: 'full'}
+  {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 
@@ -60,7 +59,7 @@ const routes: Routes = [
     ListComponent,
     CreateComponent,
     EditComponent,
-    RecipesComponent, RecipeCreatorComponent, LoginComponent, CanvasComponent, HomeComponent, passwordPopUpDialogModule
+    RecipesComponent, RecipeCreatorComponent, LoginComponent, CanvasComponent, passwordPopUpDialogModule
   ],
   imports: [
     BrowserModule,
@@ -83,6 +82,7 @@ const routes: Routes = [
     MatGridListModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    FlexLayoutModule,
     RouterModule.forRoot(routes)
   ],
   providers: [DataService, AuthGuard, LoginComponent, AuthService, {

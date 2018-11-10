@@ -8,7 +8,7 @@
                         <input matInput placeholder="Email" name="email" formControlName="email">
                     </mat-form-field>
                     <br>
-                    <mat-form-field>
+                    <mat-form-field (keydown) = "onKeyDown($event)">
                         <input matInput placeholder="Password" name="password" formControlName="password" type="password">
                     </mat-form-field>
                 </fieldset>

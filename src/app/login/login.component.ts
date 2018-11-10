@@ -49,6 +49,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  onKeyDown(event) {
+    if (event.key === "Enter") {
+      this.login();
+    }
+  }
+
   forgotPasswordPopup() {
     const DiaRef = this.dialog.open(passwordPopUpDialogModule, {
       width: '250px'
