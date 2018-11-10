@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth-service.service';
+import { User } from '../user.model';
 
 
 @Component({
@@ -12,8 +14,9 @@ export class CanvasComponent implements OnInit {
   routeLinks: any[];
   activeLinkIndex: Number;
   active_route;
+  public user: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService) {
     this.routeLinks = [
       {label: 'Shopping List', link: 'itemlist', index: 0, icon: 'playlist_add_check'},
       {label: 'Recipes', link: 'recipes', index: 1, icon: 'fastfood'}
@@ -25,6 +28,7 @@ export class CanvasComponent implements OnInit {
       this.activeLinkIndex = this.routeLinks.indexOf(this.routeLinks.find( tab => this.router.url === '/appcanvas/(tab:' + tab.link + ')'));
     });
     this.router.navigateByUrl('/appcanvas/(tab:itemlist)');
+    this.getUserName();
   }
 
   onActivate($event) {
@@ -40,6 +44,12 @@ export class CanvasComponent implements OnInit {
   logout() {
     localStorage.removeItem('jwt');
     this.router.navigate(['login']);
+  }
+
+  getUserName() {
+     this.authService.whoAmI().subscribe( (u: User) => {
+        this.user = u.name;
+     })
   }
 
 }

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth-service.service';
 import { AuthToken } from '../authToken.model';
+import { MatDialog, MatDialogRef } from '@angular/material';
+
 
 import { MatSnackBar } from '@angular/material';
 
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   public isLoggedIn: Boolean = false;
   public logginIn: Boolean = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snack: MatSnackBar) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snack: MatSnackBar, public dialog: MatDialog) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -46,4 +48,31 @@ export class LoginComponent implements OnInit {
         });
     }
   }
+
+  onKeyDown(event) {
+    if (event.key === "Enter") {
+      this.login();
+    }
+  }
+
+  forgotPasswordPopup() {
+    const DiaRef = this.dialog.open(passwordPopUpDialogModule, {
+      width: '250px'
+    })
+  }
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'passwordPopUp.html',
+})
+export class passwordPopUpDialogModule {
+
+  constructor(
+    public dialogRef: MatDialogRef<passwordPopUpDialogModule>) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }

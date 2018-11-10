@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 })
 
 export class AuthService {
+  
+  authAPI: string = "https://cookie-munchies.herokuapp.com/api/auth";
+  userAPI: string = "https://cookie-munchies.herokuapp.com/api/users/me";
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -15,6 +18,10 @@ export class AuthService {
       email: email,
       password: password
     }
-    return this.http.post('https://cookie-munchies.herokuapp.com/api/auth', userCred)
+    return this.http.post(this.authAPI, userCred);
+  }
+
+  whoAmI() {
+    return this.http.get(this.userAPI);
   }
 }

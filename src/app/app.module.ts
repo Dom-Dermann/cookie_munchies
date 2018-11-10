@@ -4,11 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { ListComponent } from './list/list.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent, passwordPopUpDialogModule } from './login/login.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './AuthInterceptor';
 import { AuthGuard } from './auth.guard';
+
 
 import { MatToolbarModule,
    MatFormFieldModule,
@@ -35,7 +37,9 @@ import { MatToolbarModule,
           MatCheckboxModule,
           MatTabsModule,
           MatGridListModule,
-          MatProgressSpinnerModule
+          MatProgressSpinnerModule,
+          MatDialogModule,
+
         } from '@angular/material';
 
 const routes: Routes = [
@@ -55,7 +59,7 @@ const routes: Routes = [
     ListComponent,
     CreateComponent,
     EditComponent,
-    RecipesComponent, RecipeCreatorComponent, LoginComponent, CanvasComponent
+    RecipesComponent, RecipeCreatorComponent, LoginComponent, CanvasComponent, passwordPopUpDialogModule
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,9 @@ const routes: Routes = [
     MatCheckboxModule,
     MatTabsModule,
     MatGridListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    FlexLayoutModule,
     RouterModule.forRoot(routes)
   ],
   providers: [DataService, AuthGuard, LoginComponent, AuthService, {
@@ -84,6 +90,7 @@ const routes: Routes = [
     useClass: AuthInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [passwordPopUpDialogModule]
 })
 export class AppModule { }
