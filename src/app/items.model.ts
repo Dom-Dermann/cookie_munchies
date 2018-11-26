@@ -4,5 +4,5 @@ export interface Item {
     name: String, 
     dateStarted: Date,
     storePosition: String, 
-    dateModified: Number
+    dateModified: Date
 }

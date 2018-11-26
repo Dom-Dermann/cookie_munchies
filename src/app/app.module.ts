@@ -14,6 +14,7 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeCreatorComponent } from './recipes/recipe-creator/recipe-creator.component';
+import { UsersComponent } from './users/users.component';
 
 import { DataService } from './data.service';
 import { AuthService } from './auth-service.service';
@@ -48,6 +49,7 @@ const routes: Routes = [
     {path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard], outlet: 'tab'},
     {path: 'itemlist', component: ListComponent, canActivate: [AuthGuard], outlet: 'tab'},
     {path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard], outlet: 'tab'},
+    {path: 'users', component: UsersComponent, canActivate: [AuthGuard], outlet: 'tab'}
   ]},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
@@ -59,7 +61,7 @@ const routes: Routes = [
     ListComponent,
     CreateComponent,
     EditComponent,
-    RecipesComponent, RecipeCreatorComponent, LoginComponent, CanvasComponent, passwordPopUpDialogModule
+    RecipesComponent, RecipeCreatorComponent, LoginComponent, CanvasComponent, passwordPopUpDialogModule, UsersComponent
   ],
   imports: [
     BrowserModule,

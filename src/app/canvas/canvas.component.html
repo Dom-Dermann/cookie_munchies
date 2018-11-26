@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <div fxFlex="25%">
+      <div class="logo" fxFlex="25%">
           Cookie Munchies
       </div>
-      <div fxFlex="50%">
-          You're loggin in as: <span> {{ user }} </span>
+      <div class="username" fxFlex="50%">
+          You're loggin in as: <span> {{ user }} </span>;  he owns the list: {{ currentList }}
       </div>
       <div fxFlex="25%">
           <button mat-raised-button color="accent" (click)="logout()">Logout</button> 

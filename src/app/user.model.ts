@@ -2,5 +2,6 @@ export interface User {
     _id: string, 
     name: string,
     email: string, 
-    isAdmin: Boolean
+    isAdmin: Boolean,
+    ownsList: string
 }

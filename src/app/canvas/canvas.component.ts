@@ -15,11 +15,13 @@ export class CanvasComponent implements OnInit {
   activeLinkIndex: Number;
   active_route;
   public user: string;
+  public currentList: string;
 
   constructor(private router: Router, private authService: AuthService) {
     this.routeLinks = [
       {label: 'Shopping List', link: 'itemlist', index: 0, icon: 'playlist_add_check'},
-      {label: 'Recipes', link: 'recipes', index: 1, icon: 'fastfood'}
+      {label: 'Recipes', link: 'recipes', index: 1, icon: 'fastfood'},
+      {label: 'Users', link: 'users', index: 2, icon: 'group'}
     ];
   }
 
@@ -33,11 +35,9 @@ export class CanvasComponent implements OnInit {
 
   onActivate($event) {
     this.active_route = $event;
-    console.log(this.active_route);
   }
 
   onCreateClicked($event) {
-    console.log('Parent received event: ', $event);
     this.active_route.getItems();
   }
 
@@ -49,7 +49,7 @@ export class CanvasComponent implements OnInit {
   getUserName() {
      this.authService.whoAmI().subscribe( (u: User) => {
         this.user = u.name;
+        this.currentList = u.ownsList
      })
   }
-
 }

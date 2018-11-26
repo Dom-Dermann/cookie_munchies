@@ -2,19 +2,30 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Item } from './items.model';
+import { AuthService } from './auth-service.service';
+import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  API_Item_URL: string = 'https://cookie-munchies.herokuapp.com/api/items';
-  API_Recipe_URL: string = 'https://cookie-munchies.herokuapp.com/api/recipes';
+  API_Item_URL: string = 'http://localhost:3223/api/lists';
+  API_Recipe_URL: string = 'http://localhost:3223/api/recipes';
+  currentUserList: string;
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private authService : AuthService) { }
 
-  getItems(){
-    return this.http.get(this.API_Item_URL);
+  getList(){
+    this.authService.whoAmI().subscribe( (u: User) => {
+      this.currentUserList = u.ownsList
+   })
+
+   console.log(this.currentUserList);
+
+   console.log(this.API_Item_URL + '/' + this.currentUserList)
+   // this needs to be dynamic
+    return this.http.get('http://localhost:3223/api/lists/5bf95c5fe38cb00f3ce6d25f');
   }
 
   postItem(name, position){

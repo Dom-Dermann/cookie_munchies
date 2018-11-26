@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 
 import { Item } from '../items.model';
+import { List } from '../list.model';
 
 @Component({
   selector: 'app-list',
@@ -24,8 +25,8 @@ export class ListComponent implements OnInit {
   }
 
   getItems() {
-    this.data.getItems().subscribe( (items: Item[]) => {
-      this.items.data = items;
+    this.data.getList().subscribe( (list: List) => {
+      this.items.data = list.items;
     });
   }
 
