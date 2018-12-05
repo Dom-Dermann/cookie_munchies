@@ -31,7 +31,7 @@ export class EditComponent implements OnInit {
     this.route.params.subscribe( (id) => {
       this.id = id.id;
     })
-    this.data.getItems().subscribe( (items: Array<object>) => {
+    this.data.getList().subscribe( (items: Array<object>) => {
       this.items = items;
       this.editItem = this.items.find((i: Item) => { return i._id == this.id }) as Item;
       this.editForm.controls['name'].setValue(this.editItem.name);
