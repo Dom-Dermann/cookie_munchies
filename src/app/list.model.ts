@@ -1,12 +1,12 @@
 export interface List {
-    users: [],
-    _id: String,
+    users: Array<String>;
+    _id: String;
     owner:  {
         isAdmin: Boolean,
         _id: String,
         name: String,
         email: String
-    }, 
+    };
     items: [
         {
             isDone: Boolean,
@@ -16,5 +16,5 @@ export interface List {
             _id: String,
             name: String
         }
-    ]
+    ];
 }

@@ -14,39 +14,31 @@ export class DataService {
   API_Recipe_URL: string = 'http://localhost:3223/api/recipes';
   currentUserList: string;
 
-  constructor(private http : HttpClient, private authService : AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
-  getList(){
-    this.authService.whoAmI().subscribe( (u: User) => {
-      this.currentUserList = u.ownsList
-   })
-
-   console.log(this.currentUserList);
-
-   console.log(this.API_Item_URL + '/' + this.currentUserList)
-   // this needs to be dynamic
-    return this.http.get('http://localhost:3223/api/lists/5bf95c5fe38cb00f3ce6d25f');
+  getList() {
+    console.log(`http://localhost:3223/api/lists/${this.currentUserList}`);
+    return this.http.get(`http://localhost:3223/api/lists/${this.currentUserList}`);
   }
 
-  postItem(name, position){
+  postItem(name, position) {
     let item: object;
 
     if (name && position) {
       item = {
         name : name,
         storePosition: position
-      }
-    } else if (name){
+      };
+    } else if (name) {
       item = {
         name: name
       };
     }
-     
-    return this.http.post(this.API_Item_URL, item);
+    return this.http.post('http://localhost:3223/api/items/5c0798bf9ad3f424704e6307', item);
   }
 
   deleteItem(id) {
-    return this.http.delete(`${this.API_Item_URL}/${id}`);
+    return this.http.delete(`http://localhost:3223/api/items/5c0798bf9ad3f424704e6307/${id}`);
   }
 
   updateItem(id, item) {

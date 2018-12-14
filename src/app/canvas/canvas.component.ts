@@ -49,7 +49,7 @@ export class CanvasComponent implements OnInit {
   getUserName() {
      this.authService.whoAmI().subscribe( (u: User) => {
         this.user = u.name;
-        this.currentList = u.ownsList
-     })
+        this.currentList = u.ownsList;
+     });
   }
 }

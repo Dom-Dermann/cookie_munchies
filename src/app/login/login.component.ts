@@ -7,6 +7,9 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 
 
 import { MatSnackBar } from '@angular/material';
+import { DataService } from '../data.service';
+import { UseExistingWebDriver } from 'protractor/built/driverProviders';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +22,7 @@ export class LoginComponent implements OnInit {
   public isLoggedIn: Boolean = false;
   public logginIn: Boolean = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snack: MatSnackBar, public dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snack: MatSnackBar, public dialog: MatDialog, private data: DataService) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -40,17 +43,24 @@ export class LoginComponent implements OnInit {
           const token = res.jwt;
           localStorage.setItem('jwt', token);
           this.isLoggedIn = true;
-          this.router.navigate(['appcanvas']);
-          this.logginIn = false;
         }, (err) => {
           this.snack.open(err.error, 'OK', {duration: 3000});
           this.logginIn = false;
+        }, () => {
+          this.authService.whoAmI().subscribe( (u: User) => {
+            this.data.currentUserList = u.ownsList;
+          }, (err) => {
+            console.log('couldn\'t fetch user list');
+          }, () => {
+            this.router.navigate(['appcanvas']);
+            this.logginIn = false;
+          });
         });
     }
   }
 
   onKeyDown(event) {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       this.login();
     }
   }

@@ -14,7 +14,7 @@ import {FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CreateComponent implements OnInit {
 
   createForm: FormGroup;
-  @Output() createClicked = new EventEmitter<Boolean>(); 
+  @Output() createClicked = new EventEmitter<Boolean>();
 
   constructor(private data: DataService, private fb: FormBuilder, private snackBar: MatSnackBar) {
     this.createForm = this.fb.group( {
@@ -26,7 +26,7 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  addItem(done:Boolean, name, position) {
+  addItem(done: Boolean, name, position) {
     this.data.postItem(name, position).subscribe( (res) => {
       console.log(res);
       this.createClicked.emit(done);
