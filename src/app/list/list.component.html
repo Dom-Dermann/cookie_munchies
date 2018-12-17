@@ -2,6 +2,17 @@
   <mat-card>
     <mat-divider></mat-divider>
     <br>
+
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="listMenu"> Pick a shopping list </button>
+    <mat-menu #listMenu="matMenu">
+      <button class="list-selector" mat-menu-item>Current List</button>
+      <button class="list-selector" mat-menu-item>Other list</button>
+    </mat-menu>
+    
+    <br>
+    <mat-divider></mat-divider>
+
+
     <table mat-table [dataSource]="items" class="item-table">
 
       <ng-container matColumnDef="name">

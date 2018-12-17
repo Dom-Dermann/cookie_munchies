@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { DataService } from '../data.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material';
 
 import { Router } from '@angular/router';
 
@@ -20,14 +21,16 @@ export class ListComponent implements OnInit {
   public displayedColumns = ['name', 'actions'];
   public updatedItem: Item;
 
-  constructor(private data: DataService, private route: Router, private authService: AuthService) { }
+  constructor(private data: DataService, private route: Router, private authService: AuthService, private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.authService.whoAmI().subscribe( ( u: User) => {
       this.data.currentUserList = u.ownsList;
+    }, (err) => {
+      this.snack.open(err.error, 'OK', {duration: 3000});
+    }, () => {
+      this.getItems();
     });
-    // TODO: every time the side is loaded get the users list and then get the items just like in the log-in screen
-    this.getItems();
   }
 
   getItems() {
@@ -51,7 +54,6 @@ export class ListComponent implements OnInit {
 
   deleteItem(id) {
     this.data.deleteItem(id).subscribe( (res) => {
-      console.log(res);
       this.getItems();
     });
   }

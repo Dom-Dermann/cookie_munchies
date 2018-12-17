@@ -40,7 +40,7 @@ import { MatToolbarModule,
           MatGridListModule,
           MatProgressSpinnerModule,
           MatDialogModule,
-
+          MatMenuModule
         } from '@angular/material';
 
 const routes: Routes = [
@@ -84,6 +84,7 @@ const routes: Routes = [
     MatGridListModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatMenuModule,
     FlexLayoutModule,
     RouterModule.forRoot(routes)
   ],

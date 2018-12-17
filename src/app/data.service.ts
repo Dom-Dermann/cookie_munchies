@@ -10,15 +10,15 @@ import { User } from './user.model';
 })
 export class DataService {
 
-  API_Item_URL: string = 'http://localhost:3223/api/lists';
-  API_Recipe_URL: string = 'http://localhost:3223/api/recipes';
+  API_List_URL: string = 'http://localhost:3223/api/lists/';
+  API_Item_URL: string = 'http://localhost:3223/api/items/';
+  API_Recipe_URL: string = 'http://localhost:3223/api/recipes/';
   currentUserList: string;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   getList() {
-    console.log(`http://localhost:3223/api/lists/${this.currentUserList}`);
-    return this.http.get(`http://localhost:3223/api/lists/${this.currentUserList}`);
+    return this.http.get(this.API_List_URL + this.currentUserList);
   }
 
   postItem(name, position) {
@@ -34,11 +34,11 @@ export class DataService {
         name: name
       };
     }
-    return this.http.post('http://localhost:3223/api/items/5c0798bf9ad3f424704e6307', item);
+    return this.http.post(this.API_Item_URL + this.currentUserList, item);
   }
 
   deleteItem(id) {
-    return this.http.delete(`http://localhost:3223/api/items/5c0798bf9ad3f424704e6307/${id}`);
+    return this.http.delete(this.API_Item_URL + this.currentUserList + '/' + id);
   }
 
   updateItem(id, item) {

@@ -8,7 +8,6 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { MatSnackBar } from '@angular/material';
 import { DataService } from '../data.service';
-import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { User } from '../user.model';
 
 @Component({
