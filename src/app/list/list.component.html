@@ -1,23 +1,24 @@
 <div>
-  <mat-card>
-    <mat-divider></mat-divider>
-    <br>
-
-    <button mat-raised-button color="primary" [matMenuTriggerFor]="listMenu"> Pick a shopping list </button>
+  <mat-card style="margin-left: 15px; margin-right: 15px;">
+    
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="listMenu" style="margin: 10px;"> Pick a shopping list </button>
     <mat-menu #listMenu="matMenu">
-      <button class="list-selector" mat-menu-item>Current List</button>
-      <button class="list-selector" mat-menu-item>Other list</button>
+      <button *ngFor="let list of listOfLists" class="list-selector" mat-menu-item> {{ list.name }} </button>
     </mat-menu>
     
     <br>
     <mat-divider></mat-divider>
-
 
     <table mat-table [dataSource]="items" class="item-table">
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Item name</th>
         <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="added_by">
+        <th mat-header-cell *matHeaderCellDef>Added by</th>
+        <td mat-cell *matCellDef="let element"> {{ element.addedBy }} </td>
       </ng-container>
 
       <ng-container matColumnDef="actions">

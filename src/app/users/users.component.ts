@@ -11,13 +11,15 @@ import { List } from '../list.model';
 })
 export class UsersComponent implements OnInit {
 
-  public users = new MatTableDataSource<String>();
+  public users = new MatTableDataSource<User>();
+  public displayedColumns = ['name', 'email', 'add'];
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    this.data.getList().subscribe( (list: List) => {
-      this.users.data = list.users;
+    this.data.getUsers().subscribe( (users: Array<User>) => {
+      console.log(users);
+      this.users.data = users;
     });
   }
 

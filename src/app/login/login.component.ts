@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth-service.service';
@@ -58,6 +58,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  newAccount() {
+    this.router.navigate(['new-account'])
+  }
+
   onKeyDown(event) {
     if (event.key === 'Enter') {
       this.login();
@@ -66,7 +70,7 @@ export class LoginComponent implements OnInit {
 
   forgotPasswordPopup() {
     const DiaRef = this.dialog.open(passwordPopUpDialogModule, {
-      width: '250px'
+      width: '500px'
     })
   }
 }

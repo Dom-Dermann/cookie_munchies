@@ -17,6 +17,7 @@
         <mat-card-actions style="text-align: center">
             <button mat-raised-button color="primary" (click)="login()">Login</button>
             <p class="forgot" (click)="forgotPasswordPopup()" style="cursor: pointer"> Forgot your password? </p>
+            <p class="forgot" (click)="newAccount()" style="cursor: pointer"> Create a new account </p>
             <mat-progress-spinner *ngIf="logginIn" mode="indeterminate" diameter="30" style="margin: 0 auto;"></mat-progress-spinner>
         </mat-card-actions>
     </mat-card>

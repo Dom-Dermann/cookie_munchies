@@ -1,0 +1,23 @@
+.register-card {
+    height: auto;
+    width: 400px;
+    align-items: center;
+    margin: auto;
+    margin-top: 10%;
+    border-radius: 10px;
+}
+
+.background {
+    background-image: url("../../assets/cookie_login.jpg");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.register-form {
+    text-align: center;
+}

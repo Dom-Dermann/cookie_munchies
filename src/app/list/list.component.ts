@@ -18,14 +18,23 @@ import { User } from '../user.model';
 export class ListComponent implements OnInit {
 
   public items = new MatTableDataSource<Item>();
-  public displayedColumns = ['name', 'actions'];
+  public displayedColumns = ['name', 'actions', 'added_by'];
   public updatedItem: Item;
+  public listOfLists: Array<Object>;
 
-  constructor(private data: DataService, private route: Router, private authService: AuthService, private snack: MatSnackBar) { }
+  constructor(private data: DataService, private route: Router, private authService: AuthService, private snack: MatSnackBar) { 
+    this.listOfLists = [
+      { name: "Miks's List",
+        id: 'someid'},
+      { name: "Josh's List", 
+        id: 'someotherid'}
+    ]
+  }
 
   ngOnInit() {
     this.authService.whoAmI().subscribe( ( u: User) => {
       this.data.currentUserList = u.ownsList;
+      this.data.currentUserName = u.first_name;
     }, (err) => {
       this.snack.open(err.error, 'OK', {duration: 3000});
     }, () => {

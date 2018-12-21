@@ -15,6 +15,7 @@ import { EditComponent } from './edit/edit.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeCreatorComponent } from './recipes/recipe-creator/recipe-creator.component';
 import { UsersComponent } from './users/users.component';
+import { NewAccountComponent } from './new-account/new-account.component';
 
 import { DataService } from './data.service';
 import { AuthService } from './auth-service.service';
@@ -25,26 +26,28 @@ import { AuthGuard } from './auth.guard';
 
 
 import { MatToolbarModule,
-   MatFormFieldModule,
-    MatInputModule,
-     MatOptionModule,
-      MatSelectModule,
-       MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatIconModule,
         MatButtonModule,
         MatCardModule,
-         MatTableModule,
-          MatDividerModule,
-          MatSnackBarModule,
-          MatCheckboxModule,
-          MatTabsModule,
-          MatGridListModule,
-          MatProgressSpinnerModule,
-          MatDialogModule,
-          MatMenuModule
+        MatTableModule,
+        MatDividerModule,
+        MatSnackBarModule,
+        MatCheckboxModule,
+        MatTabsModule,
+        MatGridListModule,
+        MatProgressSpinnerModule,
+        MatDialogModule,
+        MatMenuModule,
+        MatRadioModule
         } from '@angular/material';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'new-account', component: NewAccountComponent},
   {path: 'appcanvas', component: CanvasComponent, canActivate: [AuthGuard], children: [
     {path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard], outlet: 'tab'},
     {path: 'itemlist', component: ListComponent, canActivate: [AuthGuard], outlet: 'tab'},
@@ -61,7 +64,13 @@ const routes: Routes = [
     ListComponent,
     CreateComponent,
     EditComponent,
-    RecipesComponent, RecipeCreatorComponent, LoginComponent, CanvasComponent, passwordPopUpDialogModule, UsersComponent
+    RecipesComponent,
+    RecipeCreatorComponent,
+    LoginComponent,
+    CanvasComponent,
+    passwordPopUpDialogModule,
+    UsersComponent,
+    NewAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +95,7 @@ const routes: Routes = [
     MatDialogModule,
     MatMenuModule,
     FlexLayoutModule,
+    MatRadioModule,
     RouterModule.forRoot(routes)
   ],
   providers: [DataService, AuthGuard, LoginComponent, AuthService, {
