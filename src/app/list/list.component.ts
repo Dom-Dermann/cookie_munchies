@@ -22,17 +22,21 @@ export class ListComponent implements OnInit {
   public updatedItem: Item;
   public listOfLists: Array<Object>;
 
-  constructor(private data: DataService, private route: Router, private authService: AuthService, private snack: MatSnackBar) {
-    this.listOfLists = [
-      { name: "Miks's List",
-        id: 'someid'},
-      { name: "Josh's List",
-        id: 'someotherid'}
-    ];
-  }
+  constructor(private data: DataService, private route: Router, private authService: AuthService, private snack: MatSnackBar) {}
 
   changeList(newList) {
-    console.log('change list works. Name is: ' + newList);
+    if (newList == 0) {
+      this.authService.whoAmI().subscribe( (u: User) => {
+        this.data.currentUserList = u.ownsList;
+      }, (error) => {
+        console.log(error);
+      }, () => {
+        this.getItems();
+      });
+    } else {
+      this.data.currentUserList = newList;
+      this.getItems();
+    }
   }
 
   ngOnInit() {

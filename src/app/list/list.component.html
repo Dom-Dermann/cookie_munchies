@@ -2,10 +2,10 @@
   <mat-card style="margin-left: 15px; margin-right: 15px;">
 
     <div>
-      <label>Pick a list: </label>
-      <select (change)="changeList($event.target.value)">
-          <option value="0">-- Your List --</option>
-          <option *ngFor="let list of listOfLists" value={{list}}>
+      <label style="margin-right: 20px;">Pick a list: </label>
+      <select id="dropdown" color="warn" (change)="changeList($event.target.value)">
+          <option class="dropdown-option" value="0">-- Your List --</option>
+          <option class="dropdown-option" *ngFor="let list of listOfLists" value="{{ list._id }}">
               {{ list.owner.name }}
           </option>
       </select>

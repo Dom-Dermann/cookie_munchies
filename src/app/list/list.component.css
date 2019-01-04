@@ -13,4 +13,23 @@
 
 .list-selector {
     color: black;
+    margin-left: 10px;
 }
+
+#dropdown {
+  width: 20%;
+  padding-left: 10px;
+  background: url('../../assets/dropdown.png') repeat;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.3);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.dropdown-option {
+  color: #666;
+}
+
