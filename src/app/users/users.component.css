@@ -2,3 +2,11 @@
     min-width: 100px;
     width: 100%
 }
+
+.containerX {
+ display:flex
+}
+
+.container {
+  flex: 1 1;
+}

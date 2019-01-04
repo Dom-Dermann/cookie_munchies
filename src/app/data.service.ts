@@ -16,6 +16,7 @@ export class DataService {
   API_User_URL: string = 'http://localhost:3223/api/users';
   currentUserList: string;
   currentUserName: string;
+  currentUserId: string;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -25,13 +26,17 @@ export class DataService {
     return this.http.get(this.API_List_URL + this.currentUserList);
   }
 
+  getUserLists() {
+    return this.http.get(this.API_List_URL + '/all');
+  }
+
   // Item
   // API calls
   postItem(name, position) {
-    let item: Item = {};
+    const item: Item = {};
 
     if (name) {
-      item.name = name
+      item.name = name;
     }
 
     if (position) {
@@ -80,7 +85,15 @@ export class DataService {
     return this.http.post(this.API_User_URL, user);
   }
 
+  addUserToList(user) {
+    return this.http.post(this.API_User_URL + '/' + user, 'do this!');
+  }
+
   getUsers() {
     return this.http.get(this.API_User_URL);
+  }
+
+  getUsersInCurrentList() {
+    return this.http.get(this.API_User_URL + '/' + this.currentUserId);
   }
 }

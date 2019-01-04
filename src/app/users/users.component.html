@@ -1,26 +1,59 @@
-<h1> user overview </h1>
-<mat-card style="margin-left: 15px; margin-right: 15px;">
-  <table mat-table [dataSource]="users" class="user-table">
+<div class="containerX">
+  <div class="container">
+    <mat-card style="margin-left: 15px; margin-right: 15px; margin-bottom: 15px;">
+      <mat-card-title>
+        Users on the platform
+      </mat-card-title>
+      <table mat-table [dataSource]="users" class="user-table">
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>User name</th>
-      <td mat-cell *matCellDef="let element"> {{ element.first_name }} </td>
-    </ng-container>
+        <ng-container matColumnDef="first_name">
+          <th mat-header-cell *matHeaderCellDef>First name</th>
+          <td mat-cell *matCellDef="let element"> {{ element.first_name }} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>User email address</th>
-      <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
-    </ng-container>
+        <ng-container matColumnDef="last_name">
+          <th mat-header-cell *matHeaderCellDef>Last name</th>
+          <td mat-cell *matCellDef="let element"> {{ element.last_name }} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="add">
-      <th mat-header-cell *matHeaderCellDef class="mat-column-right">Allow user to access your shopping list</th>
-      <td mat-cell *matCellDef="let element" class="mat-column-right"> 
-        <button class="action_button" mat-icon-button color="warn" (click)="addUser( element._id )"><mat-icon> group_add </mat-icon></button>
-      </td>
-    </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>User email address</th>
+          <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <ng-container matColumnDef="add">
+          <th mat-header-cell *matHeaderCellDef class="mat-column-right">Allow user to access your shopping list</th>
+          <td mat-cell *matCellDef="let element" class="mat-column-right">
+            <button class="action_button" mat-icon-button color="warn" (click)="addUserToList(element._id)"><mat-icon> group_add </mat-icon></button>
+          </td>
+        </ng-container>
 
-  </table>
-</mat-card>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+    </mat-card>
+  </div>
+  <div class="container" style="display: inline">
+    <mat-card style="margin-left: 15px; margin-right: 15px; margin-bottom: 15px;">
+      <mat-card-title>
+        Users already sharing your list
+      </mat-card-title>
+      <table mat-table [dataSource]="currentListUsers" class="user-table">
+
+        <ng-container matColumnDef="first_name">
+          <th mat-header-cell *matHeaderCellDef>First name</th>
+          <td mat-cell *matCellDef="let element"> {{ element.first_name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="last_name">
+            <th mat-header-cell *matHeaderCellDef>Last name</th>
+            <td mat-cell *matCellDef="let element"> {{ element.last_name }} </td>
+          </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="listUserDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: listUserDisplayedColumns;"></tr>
+      </table>
+    </mat-card>
+  </div>
+</div>

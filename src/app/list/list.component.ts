@@ -22,23 +22,37 @@ export class ListComponent implements OnInit {
   public updatedItem: Item;
   public listOfLists: Array<Object>;
 
-  constructor(private data: DataService, private route: Router, private authService: AuthService, private snack: MatSnackBar) { 
+  constructor(private data: DataService, private route: Router, private authService: AuthService, private snack: MatSnackBar) {
     this.listOfLists = [
       { name: "Miks's List",
         id: 'someid'},
-      { name: "Josh's List", 
+      { name: "Josh's List",
         id: 'someotherid'}
-    ]
+    ];
+  }
+
+  changeList(newList) {
+    console.log('change list works. Name is: ' + newList);
   }
 
   ngOnInit() {
     this.authService.whoAmI().subscribe( ( u: User) => {
       this.data.currentUserList = u.ownsList;
       this.data.currentUserName = u.first_name;
+      this.data.currentUserId = u._id;
     }, (err) => {
       this.snack.open(err.error, 'OK', {duration: 3000});
     }, () => {
       this.getItems();
+      this.getLists();
+    });
+  }
+
+  // TODO: get all lists users are enrolled in (backend endpoint exists), get the list the user own as the default List for the drop-down
+  getLists() {
+    this.data.getUserLists().subscribe( (lists: Array<Object>) => {
+      console.log(lists);
+      this.listOfLists = lists;
     });
   }
 
