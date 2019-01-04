@@ -10,10 +10,10 @@ import { User } from './user.model';
 })
 export class DataService {
 
-  API_List_URL: string = 'http://localhost:3223/api/lists/';
-  API_Item_URL: string = 'http://localhost:3223/api/items/';
-  API_Recipe_URL: string = 'http://localhost:3223/api/recipes/';
-  API_User_URL: string = 'http://localhost:3223/api/users';
+  API_List_URL: string = 'https://cookie-munchies.herokuapp.com/api/lists/';
+  API_Item_URL: string = 'https://cookie-munchies.herokuapp.com/api/items/';
+  API_Recipe_URL: string = 'https://cookie-munchies.herokuapp.com/api/recipes/';
+  API_User_URL: string = 'https://cookie-munchies.herokuapp.com/api/users';
   currentUserList: string;
   currentUserName: string;
   currentUserId: string;
@@ -32,6 +32,10 @@ export class DataService {
 
   // Item
   // API calls
+  getItem(id) {
+    return this.http.get(this.API_Item_URL + '/' + id);
+  }
+
   postItem(name, position) {
     const item: Item = {};
 
@@ -43,7 +47,7 @@ export class DataService {
       item.storePosition = position;
     }
 
-    if(this.currentUserName) {
+    if (this.currentUserName) {
       item.addedBy = this.currentUserName;
     }
 
@@ -55,7 +59,7 @@ export class DataService {
   }
 
   updateItem(id, item) {
-    return this.http.put(`${this.API_Item_URL}/${id}`, item);
+    return this.http.put(this.API_Item_URL + this.currentUserList + '/' + id, item);
   }
 
   // Recipe

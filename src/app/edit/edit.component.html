@@ -1,16 +1,18 @@
-<h3>update an item</h3>
-<form [formGroup]="editForm" class="edit-form">
-        
-  <mat-form-field class="field-full-width">
-  <input matInput placeholder="Item name" formControlName="name" #name>
-  </mat-form-field>
+<mat-card style="margin: 30px;">
+  <h3>update an item</h3>
+  <form [formGroup]="editForm" class="edit-form">
 
-  <mat-form-field class="field-full-width">
-  <mat-select matInput placeholder="(optional) position in store" formControlName="position" #position>
-      <mat-option value="beginning"> beginning </mat-option>
-      <mat-option value="middle"> middle </mat-option>
-      <mat-option value="end"> end </mat-option>
-  </mat-select>
-  </mat-form-field>        
-  <button class="save-button" type="submit" (click)="updateItem(name.value, position.value)" [disabled]="editForm.invalid" mat-raised-button color="primary">Save</button>
-</form>
+    <mat-form-field class="field-full-width" style="width: 40%; margin-left: 15px; margin-right: 15px;">
+    <input matInput placeholder="Item name" formControlName="name" #name>
+    </mat-form-field>
+
+    <mat-form-field class="field-full-width" style="width: 40%; margin-left: 15px; margin-right: 15px;">
+    <mat-select matInput placeholder="(optional) position in store" formControlName="position" #position>
+        <mat-option value="beginning"> beginning </mat-option>
+        <mat-option value="middle"> middle </mat-option>
+        <mat-option value="end"> end </mat-option>
+    </mat-select>
+    </mat-form-field>
+    <button class="save-button" type="submit" (click)="updateItem(name.value, position.value)" [disabled]="editForm.invalid" mat-raised-button color="primary">Save</button>
+  </form>
+</mat-card>

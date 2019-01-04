@@ -49,11 +49,11 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'new-account', component: NewAccountComponent},
   {path: 'appcanvas', component: CanvasComponent, canActivate: [AuthGuard], children: [
-    {path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard], outlet: 'tab'},
     {path: 'itemlist', component: ListComponent, canActivate: [AuthGuard], outlet: 'tab'},
     {path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard], outlet: 'tab'},
     {path: 'users', component: UsersComponent, canActivate: [AuthGuard], outlet: 'tab'}
   ]},
+  {path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 

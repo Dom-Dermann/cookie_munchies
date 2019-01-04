@@ -1,6 +1,9 @@
 .item-table {
     min-width: 100px;
     width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
 }
 
 .mat-column-right {

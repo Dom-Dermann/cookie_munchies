@@ -10,6 +10,7 @@
     margin: 20px;
 }
 
-.field-full-width {
-    width: 100%;
+.field-half-width {
+  margin: 20px;
+  width: 40%;
 }

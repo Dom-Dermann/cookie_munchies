@@ -86,8 +86,7 @@ export class ListComponent implements OnInit {
   }
 
   editClick(id) {
-    console.log(id);
-    this.route.navigate(['/edit', id]);
+    this.route.navigate(['edit', id]);
   }
 
   /* commented out because this button is currently not in use

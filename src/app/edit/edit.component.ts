@@ -16,37 +16,54 @@ import { Router } from '@angular/router';
 export class EditComponent implements OnInit {
 
   editForm: FormGroup;
-  items: Array<object>;
+  items: Array<Item>;
   id: String;
   editItem: Item;
 
-  constructor(private data: DataService, private fb:FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(private data: DataService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
     this.editForm = this.fb.group( {
       name : ['', Validators.required],
       position: ['']
-    })
+    });
    }
+
+   updateItem(name, position) {
+    this.editItem = {
+      name: name,
+      storePosition: position,
+      addedBy: this.data.currentUserName
+    };
+
+    this.data.updateItem(this.id, this.editItem).subscribe( (i) => {
+      console.log(i);
+      this.router.navigate(['/appcanvas']);
+    });
+  }
 
   ngOnInit() {
     this.route.params.subscribe( (id) => {
       this.id = id.id;
-    })
-    this.data.getList().subscribe( (items: Array<object>) => {
-      this.items = items;
-      this.editItem = this.items.find((i: Item) => { return i._id == this.id }) as Item;
-      this.editForm.controls['name'].setValue(this.editItem.name);
-      // convert store position back from number to string
-      this.editForm.controls['position'].setValue(this.editItem.storePosition);
-      console.log(this.editItem);
     });
-  }
 
-  updateItem(name, position) {
-    this.editItem.name = name;
-    this.editItem.storePosition = position;
-    this.data.updateItem(this.id, this.editItem).subscribe( (i) => {
-      console.log(i);
-      this.router.navigate(['/itemlist']);
+    this.data.getItem(this.id).subscribe( (item: Item) => {
+      switch (item.storePosition) {
+        case '0':
+          item.storePosition = 'none';
+          break;
+        case '1':
+          item.storePosition = 'beginning';
+          break;
+        case '2':
+          item.storePosition = 'middle';
+          break;
+        case '3':
+          item.storePosition = 'end';
+      }
+
+      this.editForm.setValue( {
+        name: item.name,
+        position: item.storePosition
+      });
     });
   }
 }
