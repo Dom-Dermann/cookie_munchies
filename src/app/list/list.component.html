@@ -6,7 +6,7 @@
       <select id="dropdown" color="warn" (change)="changeList($event.target.value)">
           <option class="dropdown-option" value="0">-- Your List --</option>
           <option class="dropdown-option" *ngFor="let list of listOfLists" value="{{ list._id }}">
-              {{ list.owner.name }}
+              {{ list.owner.first_name }}'s List
           </option>
       </select>
     </div>

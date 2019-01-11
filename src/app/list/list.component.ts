@@ -52,10 +52,8 @@ export class ListComponent implements OnInit {
     });
   }
 
-  // TODO: get all lists users are enrolled in (backend endpoint exists), get the list the user own as the default List for the drop-down
   getLists() {
     this.data.getUserLists().subscribe( (lists: Array<Object>) => {
-      console.log(lists);
       this.listOfLists = lists;
     });
   }
